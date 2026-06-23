@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crop-yield-disease-diagnosis"
+version = "0.1.0"
+description = "Forecast crop yield and diagnose plant disease from satellite/drone imagery and field data."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Open Source Contributors"}]
+keywords = ["precision-agriculture", "ndvi", "crop-yield", "disease-diagnosis", "ipm"]
+dependencies = [
+    "pydantic>=2.0",
+    "numpy>=1.24",
+    "python-dateutil>=2.8",
+    "requests>=2.31",
+    "feedparser>=6.0",
+    "beautifulsoup4>=4.12",
+    "typing-extensions>=4.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.1.0", "mypy>=1.5"]
+
+[project.urls]
+Homepage = "https://github.com/example/crop-yield-disease-diagnosis"
+Repository = "https://github.com/example/crop-yield-disease-diagnosis"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--cov=src/crop_yield_disease_diagnosis --cov-report=term-missing --cov-fail-under=80"
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
